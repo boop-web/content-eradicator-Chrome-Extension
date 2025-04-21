@@ -1,0 +1,41 @@
+{
+  "en": {
+    "title": "Settings",
+    "blocked_websites": "Blocked Websites",
+    "website_placeholder": "Enter website (e.g., facebook.com)",
+    "add_website": "Add Website",
+    "export_import": "Export / Import Keywords",
+    "export": "Export",
+    "import_placeholder": "Paste exported keywords JSON here",
+    "import": "Import",
+    "toggle_theme": "Toggle Theme",
+    "save_language": "Save Language",
+    "language_select": "Select Language"
+  },
+  "de": {
+    "title": "Einstellungen",
+    "blocked_websites": "Blockierte Webseiten",
+    "website_placeholder": "Website eingeben (z. B. facebook.com)",
+    "add_website": "Website hinzufügen",
+    "export_import": "Stichwörter exportieren / importieren",
+    "export": "Exportieren",
+    "import_placeholder": "Exportierte Stichwörter hier einfügen",
+    "import": "Importieren",
+    "toggle_theme": "Thema wechseln",
+    "save_language": "Sprache speichern",
+    "language_select": "Sprache auswählen"
+  },
+  "fr": {
+    "title": "Paramètres",
+    "blocked_websites": "Sites web bloqués",
+    "website_placeholder": "Entrez le site (ex. facebook.com)",
+    "add_website": "Ajouter un site",
+    "export_import": "Exporter / Importer les mots-clés",
+    "export": "Exporter",
+    "import_placeholder": "Collez ici les mots-clés exportés",
+    "import": "Importer",
+    "toggle_theme": "Changer le thème",
+    "save_language": "Sauvegarder la langue",
+    "language_select": "Choisir la langue"
+  }
+}

@@ -1,0 +1,34 @@
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.set({ keywords: [], websites: [] });
+});
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+  if (changeInfo.status === "complete") {
+    chrome.storage.local.get(["keywords", "websites"], (result) => {
+      const { keywords = [], websites = [] } = result;
+      const url = new URL(tab.url);
+      if (websites.some(site => url.hostname.includes(site))) {
+        chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          func: () => document.body.innerHTML = '<h1>Website Blocked</h1>',
+        });
+        return;
+      }
+      chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        func: (keywords) => {
+          const tags = ['div', 'span', 'p'];
+          tags.forEach(tag => {
+            const elements = document.querySelectorAll(tag);
+            elements.forEach(el => {
+              if (keywords.some(keyword => el.innerText.includes(keyword))) {
+                el.style.display = 'none';
+              }
+            });
+          });
+        },
+        args: [keywords]
+      });
+    });
+  }
+});

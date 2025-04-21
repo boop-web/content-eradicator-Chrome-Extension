@@ -1,0 +1,80 @@
+document.getElementById('addKeyword').addEventListener('click', () => {
+  const keyword = document.getElementById('keywordInput').value.trim();
+  if (!keyword) return;
+  chrome.storage.local.get({ keywords: [] }, (data) => {
+    const keywords = data.keywords;
+    keywords.push(keyword);
+    chrome.storage.local.set({ keywords }, () => {
+      displayKeywords();
+      document.getElementById('keywordInput').value = '';
+    });
+  });
+});
+
+function displayKeywords() {
+  chrome.storage.local.get({ keywords: [] }, (data) => {
+    const list = document.getElementById('keywordList');
+    list.innerHTML = '';
+    data.keywords.forEach((kw) => {
+      const li = document.createElement('li');
+      li.textContent = kw;
+      list.appendChild(li);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  displayKeywords();
+  chrome.storage.local.get({ theme: "light" }, (data) => {
+    document.getElementById("popupBody").className = data.theme + "-mode";
+  });
+});
+
+document.getElementById('openSettings').addEventListener('click', () => {
+  chrome.runtime.openOptionsPage();
+});
+
+document.getElementById('toggleTheme').addEventListener('click', () => {
+  const body = document.getElementById("popupBody");
+  const isDark = body.classList.contains("dark-mode");
+  const newTheme = isDark ? "light" : "dark";
+  chrome.storage.local.set({ theme: newTheme }, () => {
+    body.className = newTheme + "-mode";
+  });
+});<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 10px; transition: background 0.3s, color 0.3s; }
+    input, button, textarea, select { width: 100%; margin: 5px 0; }
+    textarea { height: 100px; }
+    .dark-mode { background: #1e1e1e; color: white; }
+    .light-mode { background: white; color: black; }
+  </style>
+</head>
+<body id="settingsBody">
+  <h3 id="title">Settings</h3>
+  <h4 id="blocked_websites">Blocked Websites</h4>
+  <input type="text" id="websiteInput" placeholder="">
+  <button id="addWebsite"></button>
+  <ul id="websiteList"></ul>
+
+  <h4 id="export_import">Export / Import Keywords</h4>
+  <button id="exportBtn"></button>
+  <textarea id="importBox" placeholder=""></textarea>
+  <button id="importBtn"></button>
+
+  <h4 id="language_select">Select Language</h4>
+  <select id="languageMenu">
+    <option value="en">English</option>
+    <option value="de">Deutsch</option>
+    <option value="fr">Français</option>
+  </select>
+  <button id="saveLang"></button>
+
+  <hr>
+  <button id="toggleTheme"></button>
+
+  <script src="settings.js"></script>
+</body>
+</html>
