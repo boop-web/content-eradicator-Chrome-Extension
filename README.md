@@ -1,7 +1,5 @@
 # Content Eradicator Extension
 
-# Content Eradicator Extension
-
 **Content Eradicator** is a Chrome extension originally inspired by a post from [Besart Kuleta](https://bit.ly/content-eradicator), where he created a small tool to hide annoying news content based on keywords like "Big Brother." Someone in the comments asked for an open-source version, so I decided to continue his great idea.
 
 This enhanced version includes:
