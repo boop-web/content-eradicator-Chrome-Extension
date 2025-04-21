@@ -25,6 +25,8 @@ I made this for personal productivity, but it's now available for anyone who fin
 ---
 
 ## Folder Structure
+
+```Structure
 content-eradicator-extension/
 ├── background.js
 ├── icon.png (any image 128x128)
@@ -34,6 +36,7 @@ content-eradicator-extension/
 ├── settings.html
 ├── settings.js
 └── translations.json
+```
 
 ---
 
